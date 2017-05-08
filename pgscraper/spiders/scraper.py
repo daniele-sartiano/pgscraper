@@ -6,7 +6,7 @@ import tldextract
 
 class PGScraper(scrapy.Spider):
     name = 'pgscraper'
-    download_delay = 2
+    download_delay = 4
 
     def __init__(self, url, n, max):
         self.url = url
@@ -16,7 +16,7 @@ class PGScraper(scrapy.Spider):
     def start_requests(self):
         p = ''
         c = 1
-        while c < self.<max:
+        while c < self.max:
             yield scrapy.Request(url=self.url % (p, self.n), callback=self.parse)
             c += 1
             p = 'p-%s' % c
